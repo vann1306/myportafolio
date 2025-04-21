@@ -425,7 +425,26 @@ body {
     font-family: "Be Vietnam Pro";
   }
   
+  .drive-btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 8px 20px;
+    background: #9F0000;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    font-family: "Be Vietnam Pro";
+    transition: background 0.3s;
+  }
   
+  .drive-btn:hover {
+    background: #7A0000;
+  }
+  
+  .descripcion-lightbox a {
+    color: #F2E7DC;
+    text-decoration: underline;
+  }
   
   
   

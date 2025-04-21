@@ -76,10 +76,20 @@ document.addEventListener('DOMContentLoaded', function() {
   
 
     function openLightbox(imgElement) {
+      const lightbox = document.getElementById('lightbox');
+      const imgAmpliada = document.getElementById('imagen-ampliada');
+      const titulo = document.getElementById('titulo-proyecto');
+      const descripcion = document.getElementById('texto-descripcion');
+      
       imgAmpliada.src = imgElement.src;
       imgAmpliada.alt = imgElement.alt;
-      tituloProyecto.textContent = imgElement.dataset.titulo || "Proyecto";
-      textoDescripcion.textContent = imgElement.dataset.descripcion || "Descripción no disponible";
+      titulo.textContent = imgElement.dataset.titulo || "Proyecto";
+      
+      // Descripción con botón de Drive (si existe enlace)
+      const driveLink = imgElement.dataset.link;
+      descripcion.innerHTML = imgElement.dataset.descripcion + 
+        (driveLink ? `<br><a href="${driveLink}" target="_blank" class="drive-btn">Ver más </a>` : "");
+    
       lightbox.style.display = "block";
       document.body.style.overflow = "hidden";
     }
