@@ -1,104 +1,100 @@
-document.addEventListener('DOMContentLoaded', function() {
-  // Función para inicializar un carrusel
-  function initCarrusel(carrusel) {
-    const carruselInterno = carrusel.querySelector('.carrusel-interno');
-    const siguienteBtn = carrusel.querySelector('.siguiente');
-    const anteriorBtn = carrusel.querySelector('.anterior');
-    const imagenes = carrusel.querySelectorAll('img');
-    let currentIndex = 0;
-    const itemWidth = 300 + 20; // Ancho de imagen + gap
+document.addEventListener('DOMContentLoaded', () => {
+  // Configuración del carrusel
+  const carruseles = document.querySelectorAll('.carrusel');
+
+  carruseles.forEach(carrusel => {
+    carrusel.style.display = 'block';
+    const interno = carrusel.querySelector('.carrusel-interno');
+    const siguiente = carrusel.querySelector('.carrusel-btn.siguiente');
+    const anterior = carrusel.querySelector('.carrusel-btn.anterior');
+    const slides = interno.querySelectorAll('img');
+    let index = 0;
+
+    const slideWidth = slides[0].offsetWidth + parseInt(window.getComputedStyle(interno).gap);
     
-    function updateCarrusel() {
-      carruselInterno.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
-    }
-    
-    siguienteBtn.addEventListener('click', () => {
-      if (currentIndex < imagenes.length - 1) {
-        currentIndex++;
-        updateCarrusel();
-      }
-    });
-    
-    anteriorBtn.addEventListener('click', () => {
-      if (currentIndex > 0) {
-        currentIndex--;
-        updateCarrusel();
-      }
-    });
-    
-    // Para pantallas pequeñas
     if (window.matchMedia('(max-width: 768px)').matches) {
-      carruselInterno.style.overflowX = 'auto';
-      carruselInterno.style.flexWrap = 'nowrap';
-      carruselInterno.style.scrollSnapType = 'x mandatory';
+      interno.style.overflowX = 'auto';
+      interno.style.flexWrap = 'nowrap';
+      interno.style.scrollSnapType = 'x mandatory';
       
-      imagenes.forEach(img => {
+      slides.forEach(img => {
         img.style.scrollSnapAlign = 'start';
       });
       
-      siguienteBtn.style.display = 'none';
-      anteriorBtn.style.display = 'none';
+      siguiente.style.display = 'none';
+      anterior.style.display = 'none';
+    } else {
+      siguiente.addEventListener('click', (e) => {
+        e.stopPropagation(); // Previene que el evento llegue al carrusel
+        if (index < slides.length - 1) {
+          index++;
+          interno.style.transform = `translateX(-${index * slideWidth}px)`;
+        }
+      });
+
+      anterior.addEventListener('click', (e) => {
+        e.stopPropagation(); // Previene que el evento llegue al carrusel
+        if (index > 0) {
+          index--;
+          interno.style.transform = `translateX(-${index * slideWidth}px)`;
+        }
+      });
     }
-  }
+  });
 
-  // Inicializar todos los carruseles
-  document.querySelectorAll('.carrusel').forEach(initCarrusel);
+// Lightbox - Versión robusta
+const images = document.querySelectorAll('.carrusel-interno img');
+const lightbox = document.getElementById('lightbox');
 
-  // Lightbox
-  const lightbox = document.getElementById('lightbox');
-  const imgAmpliada = document.getElementById('imagen-ampliada');
-  const tituloProyecto = document.getElementById('titulo-proyecto');
-  const textoDescripcion = document.getElementById('texto-descripcion');
-  const cerrarLightbox = document.querySelector('.cerrar-lightbox');
+if (!lightbox) {
+  console.error('Error: No se encontró el lightbox en el DOM');
+  return;
+}
 
-  function openLightbox(imgElement) {
-    imgAmpliada.src = imgElement.src;
-    imgAmpliada.alt = imgElement.alt;
-    tituloProyecto.textContent = imgElement.dataset.titulo || "Proyecto";
+images.forEach(img => {
+  img.addEventListener('click', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
     
-    const driveLink = imgElement.dataset.link;
-    textoDescripcion.innerHTML = imgElement.dataset.descripcion + 
-      (driveLink ? `<br><a href="${driveLink}" target="_blank" class="drive-btn">Ver más</a>` : "");
+    // Actualizar contenido del lightbox
+    document.getElementById('imagen-ampliada').src = this.src;
+    document.getElementById('titulo-proyecto').textContent = 
+      this.dataset.titulo || "Proyecto sin título";
     
+    const descripcion = this.dataset.descripcion || "Descripción no disponible";
+    const link = this.dataset.link ? 
+      `<br><a href="${this.dataset.link}" target="_blank" class="drive-btn">Ver proyecto completo</a>` : '';
+    
+    document.getElementById('texto-descripcion').innerHTML = descripcion + link;
+    
+    // Mostrar lightbox
     lightbox.style.display = "block";
     document.body.style.overflow = "hidden";
-  }
+  });
+});
 
-  function closeLightbox() {
+// Cerrar lightbox
+document.querySelector('.cerrar-lightbox').addEventListener('click', function() {
+  lightbox.style.display = "none";
+  document.body.style.overflow = "auto";
+});
+
+// Cerrar al hacer clic fuera
+lightbox.addEventListener('click', function(e) {
+  if (e.target === this) {
+    this.style.display = "none";
+    document.body.style.overflow = "auto";
+  }
+});
+
+// Cerrar con ESC
+document.addEventListener('keydown', function(e) {
+  if (e.key === "Escape" && lightbox.style.display === "block") {
     lightbox.style.display = "none";
     document.body.style.overflow = "auto";
   }
+});
 
-  document.querySelectorAll('.carrusel').forEach(carrusel => {
-    carrusel.addEventListener('click', (e) => {
-      const img = e.target.closest('img');
-      if (img && carrusel.contains(img)) {
-        openLightbox(img);
-      }
-    });
-  });
-
-  cerrarLightbox.addEventListener('click', closeLightbox);
-  lightbox.addEventListener('click', (e) => {
-    if (e.target === lightbox) closeLightbox();
-  });
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === "Escape" && lightbox.style.display === "block") {
-      closeLightbox();
-    }
-  });
-
-  // Smooth scrolling para la navegación
-  document.querySelectorAll('.navbar-links a').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      e.preventDefault();
-      const targetId = this.getAttribute('href');
-      const targetElement = document.querySelector(targetId);
-      
-      targetElement.scrollIntoView({
-        behavior: 'smooth'
-      });
-    });
-  });
+ 
+ 
 });

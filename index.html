@@ -1,27 +1,21 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>VannOchoaPortafolio</title>
-  <link href='style.css' rel='stylesheet'>
+  <title>Vann Ochoa Portafolio</title>
+  <link href="style.css" rel="stylesheet">
 
-
-  <!-- fuente Vietnam Pro-->
+  <!-- Fuentes -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
- 
-  <!-- fuente Lexend exa-->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Lexend+Exa:wght@100..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@100;400;700&family=Lexend+Exa:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
   <nav class="navbar">
     <div class="navbar-contenedor">
-      <a href="#" class="logo">Vann Ochoa</a>
+      
       <ul class="navbar-links">
         <li><a href="#sobre-mi">Sobre mí</a></li>
         <li><a href="#proyectos">Proyectos</a></li>
@@ -55,11 +49,6 @@
 </div>
 </section>
 
-
-
-
-
-
 <!-- Sección 2: Pestañas con carrusel -->
 <h2 class="subt">Sobre mi trabajo</h2>
 <section id="proyectos">
@@ -87,7 +76,7 @@
     <div class="carrusel">
       <div class="carrusel-interno">
         <img src="src/img/isometrico_explosivo.jpg"  alt="Illustrator" data-titulo="Illustrator" data-descripcion="Trazado y edición avanzada de vectores."     data-link="https://drive.google.com/drive/folders/1iTR6UoPHURZ52rrETJFTy6YSF3ERdikE?usp=sharing">
-        <img src=".src/img/Plano.jpg" alt="Autocad" data-titulo="Autocad" data-descripcion="Diseño de planos y modelos en AutoCad" data-link="https://drive.google.com/drive/folders/1kw6TfTgU3g9nvANcU_T7cHnT1s0l1qju?usp=sharing">
+        <img src="src/img/Plano.jpg" alt="Autocad" data-titulo="Autocad" data-descripcion="Diseño de planos y modelos en AutoCad" data-link="https://drive.google.com/drive/folders/1kw6TfTgU3g9nvANcU_T7cHnT1s0l1qju?usp=sharing">
         <img src="src/img/Collage5.jpg" alt="Photoshop" data-titulo="Photoshop" data-descripcion="Edición y corrección de imagenes en Photoshop" data-link="https://drive.google.com/drive/folders/1R6sGq97mgZt842SdXXU50BcYr20HGMH2?usp=sharing">
         <img src="src/img/estante03.jpg" alt="3D MAX" data-titulo="3D Max" data-descripcion="Modelos 3D y escenarios hechos en 3D Max" data-link="https://drive.google.com/drive/folders/1aPybvnSt0NyTqcwJT3E4i7pTJ2cqjUr2?usp=sharing">
         <img src="src/img/roto1.jpg" alt="Animate" data-titulo="Animate" data-descripcion="Animaciones hechas en el programa animate. En la imagen se muestra un cuadro de una rotoscopia realizada para el taller de animación digital con el M.A.V. Abraham Lepe" data-link="https://drive.google.com/drive/folders/1cCKD4R1t2_osnRttBl6MJDQVW3SHPIUj?usp=sharing">
@@ -103,14 +92,14 @@
 <div id="lightbox" class="lightbox">
   <span class="cerrar-lightbox">&times;</span>
   <div class="contenido-lightbox">
-    <img id="imagen-ampliada" class="imagen-lightbox">
+    <img id="imagen-ampliada" class="imagen-lightbox" alt="Imagen ampliada">
     <div class="descripcion-lightbox">
       <h3 id="titulo-proyecto"></h3>
       <p id="texto-descripcion"></p>
     </div>
   </div>
 </div>
-</div>
+
 
 
 
@@ -201,7 +190,7 @@
   </div>
 </div>
 </section>
-<script src="main.js"></script>
+<script src="main.js" defer></script>
 </body>
 </html>
 
