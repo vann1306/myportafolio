@@ -1,15 +1,11 @@
 <!doctype html>
 <html lang="en">
-
-
-
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>VannOchoaPortafolio</title>
   <link href='style.css' rel='stylesheet'>
-  <script src="main.js"></script>
+
 
   <!-- fuente Vietnam Pro-->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,12 +18,21 @@
   <link href="https://fonts.googleapis.com/css2?family=Lexend+Exa:wght@100..900&display=swap" rel="stylesheet">
 </head>
 
-
-
-
 <body>
+  <nav class="navbar">
+    <div class="navbar-contenedor">
+      <a href="#" class="logo">Vann Ochoa</a>
+      <ul class="navbar-links">
+        <li><a href="#sobre-mi">Sobre mí</a></li>
+        <li><a href="#proyectos">Proyectos</a></li>
+        <li><a href="#herramientas">Herramientas</a></li>
+        <li><a href="#habilidades">Habilidades</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </div>
+  </nav>
 <!-- seccion 1: presentacion -->
-   
+<section id="sobre-mi">  
   <h1 class="tit">
       Hola, soy Vann
   </h1>
@@ -48,8 +53,7 @@
 </a>
     </div>
 </div>
-
-
+</section>
 
 
 
@@ -58,19 +62,10 @@
 
 <!-- Sección 2: Pestañas con carrusel -->
 <h2 class="subt">Sobre mi trabajo</h2>
-
-
-
-
-<div class="contenedor-pestanas">
-  <!-- Botones de pestañas -->
-  <div class="pestanas">
-    <button class="pestana-btn activo" data-carrusel="carrusel1">Proyectos</button>
-    <button class="pestana-btn" data-carrusel="carrusel2"> Herramientas</button>
-  </div>
+<section id="proyectos">
+  <h2 class="subt">Proyectos</h2>
   <div class="carrusel-contenedor">
-    <!-- Carrusel 1 -->
-    <div id="carrusel1" class="carrusel activo">
+    <div class="carrusel">
       <div class="carrusel-interno">
         <img  src="src/img/nugo.jfif" alt="Manual de identidad" data-titulo="Proyecto de identidad gráfica" data-descripcion="Se hizo la identidad gráfica para un proyecto que busca promover la alimentación conciente en oficinistas de la Ciudad de México, especificamente la zona de Insurgentes Sur. Se trabajó en conjunto con las diseñadoras Carolina Gutiérrez, Mariana Abascal y Tamara Chavéz" data-link="https://drive.google.com/file/d/1b_GG3LMwTuQKLIrRj_L4ACPbUlfDdEvK/view?usp=sharing">
         <img  src="src/img/cartografia.jpeg" alt="Cartografía Crítica" data-titulo="Cartografía Crítica de la colonia Las Tinajas" data-descripcion="En este proyecto se estudiaron las interacciones en el espacio de la colonia Las Tinajas en Cuajimalpa. Se pretenedia entender la forma en que las construcciones, las caracteristicas topograficas y el contexto socioeconomico influyen en las relaciones sociales dentro de la comunidad. Hecho en conjunto con Carolina Gutierrez y Arturo Díaz" data-link="https://drive.google.com/file/d/1WkZodTO7T-7G2sSj9raHgInykxDJjQbT/view?usp=sharing">
@@ -82,26 +77,27 @@
       <button class="carrusel-btn anterior">&#10094;</button>
       <button class="carrusel-btn siguiente">&#10095;</button>
     </div>
+  </div>
+</section>
 
 
-
-
-    <!-- Carrusel 2 -->
-    <div id="carrusel2" class="carrusel">
+<section id="herramientas">
+  <h2 class="subt">Herramientas</h2>
+  <div class="carrusel-contenedor">
+    <div class="carrusel">
       <div class="carrusel-interno">
         <img src="src/img/isometrico_explosivo.jpg"  alt="Illustrator" data-titulo="Illustrator" data-descripcion="Trazado y edición avanzada de vectores."     data-link="https://drive.google.com/drive/folders/1iTR6UoPHURZ52rrETJFTy6YSF3ERdikE?usp=sharing">
-        <img src="src/img/Plano.jpg" alt="Autocad" data-titulo="Autocad" data-descripcion="Diseño de planos y modelos en AutoCad" data-link="https://drive.google.com/drive/folders/1kw6TfTgU3g9nvANcU_T7cHnT1s0l1qju?usp=sharing">
+        <img src=".src/img/Plano.jpg" alt="Autocad" data-titulo="Autocad" data-descripcion="Diseño de planos y modelos en AutoCad" data-link="https://drive.google.com/drive/folders/1kw6TfTgU3g9nvANcU_T7cHnT1s0l1qju?usp=sharing">
         <img src="src/img/Collage5.jpg" alt="Photoshop" data-titulo="Photoshop" data-descripcion="Edición y corrección de imagenes en Photoshop" data-link="https://drive.google.com/drive/folders/1R6sGq97mgZt842SdXXU50BcYr20HGMH2?usp=sharing">
         <img src="src/img/estante03.jpg" alt="3D MAX" data-titulo="3D Max" data-descripcion="Modelos 3D y escenarios hechos en 3D Max" data-link="https://drive.google.com/drive/folders/1aPybvnSt0NyTqcwJT3E4i7pTJ2cqjUr2?usp=sharing">
         <img src="src/img/roto1.jpg" alt="Animate" data-titulo="Animate" data-descripcion="Animaciones hechas en el programa animate. En la imagen se muestra un cuadro de una rotoscopia realizada para el taller de animación digital con el M.A.V. Abraham Lepe" data-link="https://drive.google.com/drive/folders/1cCKD4R1t2_osnRttBl6MJDQVW3SHPIUj?usp=sharing">
         <img src="src/img/Audition.jpg" alt="Audition" data-titulo="Audition" data-descripcion="Edición de audio para contenido audiovisual. En la imagen se muestra la mesa de trabajo para una animación realizada en conjunto con Arturo Díaz y Carolina Gutiérrez, titulada Día Radiante" data-link="https://drive.google.com/drive/folders/1DeESp8Gkouz06mEKzOYrdMuvgx3AzGsR?usp=sharing">
-
-     
       </div>
       <button class="carrusel-btn anterior">&#10094;</button>
       <button class="carrusel-btn siguiente">&#10095;</button>
     </div>
   </div>
+</section>
 
 
 <div id="lightbox" class="lightbox">
@@ -115,11 +111,11 @@
   </div>
 </div>
 </div>
-<script src="/main.js"></script>
 
 
 
 
+<section id="habilidades">
 <h2 class="subt">Habilidades Complementarias</h2>
 <div class="contenedor-habilidades">
   <!-- Idiomas -->
@@ -173,8 +169,9 @@
 
 </div>
 
-
+</section>
 <!-- Sección 4: Contacto -->
+<section id="contacto"> 
 <h2 class="subt">Contacto</h2>
 <div class="contenedor-contacto">
   <!-- Foto de perfil redonda -->
@@ -203,8 +200,8 @@
     </a>
   </div>
 </div>
-
-
+</section>
+<script src="main.js"></script>
 </body>
 </html>
 

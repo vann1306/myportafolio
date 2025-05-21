@@ -1,144 +1,104 @@
 document.addEventListener('DOMContentLoaded', function() {
-
-    const pestanaBtns = document.querySelectorAll('.pestana-btn');
-    const carruseles = document.querySelectorAll('.carrusel');
-   
-    pestanaBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        // Remover clase activa de todos los botones y carruseles
-        pestanaBtns.forEach(b => b.classList.remove('activo'));
-        carruseles.forEach(c => c.classList.remove('activo'));
-       
-
-        btn.classList.add('activo');
-       
-
-        const carruselId = btn.getAttribute('data-carrusel');
-        document.getElementById(carruselId).classList.add('activo');
-      });
-    });
-  
-  
-  
-   const carruselInternos = document.querySelectorAll('.carrusel-interno');
-   
-    carruselInternos.forEach(carrusel => {
-      const siguienteBtn = carrusel.parentElement.querySelector('.siguiente');
-      const anteriorBtn = carrusel.parentElement.querySelector('.anterior');
-      const imagenes = carrusel.querySelectorAll('img');
-      let currentIndex = 0;
-      const itemWidth = 300 + 20; // Ancho de imagen + gap
-     
-      function updateCarrusel() {
-        carrusel.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
-      }
-     
-      siguienteBtn.addEventListener('click', () => {
-        if (currentIndex < imagenes.length - 1) {
-          currentIndex++;
-          updateCarrusel();
-        }
-      });
-     
-      anteriorBtn.addEventListener('click', () => {
-        if (currentIndex > 0) {
-          currentIndex--;
-          updateCarrusel();
-        }
-      });
-     
-      // Para pantallas pequeñas
-      if (window.matchMedia('(max-width: 768px)').matches) {
-        carrusel.style.overflowX = 'auto';
-        carrusel.style.flexWrap = 'nowrap';
-        carrusel.style.scrollSnapType = 'x mandatory';
-       
-        imagenes.forEach(img => {
-          img.style.scrollSnapAlign = 'start';
-        });
-       
-        siguienteBtn.style.display = 'none';
-        anteriorBtn.style.display = 'none';
-      }
-    });
-  
-  
-  
-  
-   
-    const lightbox = document.getElementById('lightbox');
-    const imgAmpliada = document.getElementById('imagen-ampliada');
-    const tituloProyecto = document.getElementById('titulo-proyecto');
-    const textoDescripcion = document.getElementById('texto-descripcion');
-    const cerrarLightbox = document.querySelector('.cerrar-lightbox');
-  
-  
-  
-
-    function openLightbox(imgElement) {
-      const lightbox = document.getElementById('lightbox');
-      const imgAmpliada = document.getElementById('imagen-ampliada');
-      const titulo = document.getElementById('titulo-proyecto');
-      const descripcion = document.getElementById('texto-descripcion');
-      
-      imgAmpliada.src = imgElement.src;
-      imgAmpliada.alt = imgElement.alt;
-      titulo.textContent = imgElement.dataset.titulo || "Proyecto";
-      
-      // Descripción con botón de Drive (si existe enlace)
-      const driveLink = imgElement.dataset.link;
-      descripcion.innerHTML = imgElement.dataset.descripcion + 
-        (driveLink ? `<br><a href="${driveLink}" target="_blank" class="drive-btn">Ver más </a>` : "");
+  // Función para inicializar un carrusel
+  function initCarrusel(carrusel) {
+    const carruselInterno = carrusel.querySelector('.carrusel-interno');
+    const siguienteBtn = carrusel.querySelector('.siguiente');
+    const anteriorBtn = carrusel.querySelector('.anterior');
+    const imagenes = carrusel.querySelectorAll('img');
+    let currentIndex = 0;
+    const itemWidth = 300 + 20; // Ancho de imagen + gap
     
-      lightbox.style.display = "block";
-      document.body.style.overflow = "hidden";
+    function updateCarrusel() {
+      carruselInterno.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
     }
-  
-  
-  
-  
-    function closeLightbox() {
-      lightbox.style.display = "none";
-      document.body.style.overflow = "auto";
-    }
-  
-  
-  
-  
-  
-    document.querySelectorAll('.carrusel-interno img').forEach(img => {
-      img.style.cursor = 'pointer'; // Cambia el cursor al pasar sobre imágenes
-     
-      img.addEventListener('click', function() {
-        openLightbox(this); // 'this' es la imagen clickeada
-      });
-    });
-  
-  
-  
-  
-
-    cerrarLightbox.addEventListener('click', closeLightbox);
-  
-  
-  
-  
-
-    lightbox.addEventListener('click', function(e) {
-      if (e.target === this) { // Si se hizo clic en el fondo (no en la imagen)
-        closeLightbox();
+    
+    siguienteBtn.addEventListener('click', () => {
+      if (currentIndex < imagenes.length - 1) {
+        currentIndex++;
+        updateCarrusel();
       }
     });
-  
-  
-  
-  
-    // Evento para cerrar con la tecla ESC
-    document.addEventListener('keydown', function(e) {
-      if (e.key === "Escape" && lightbox.style.display === "block") {
-        closeLightbox();
+    
+    anteriorBtn.addEventListener('click', () => {
+      if (currentIndex > 0) {
+        currentIndex--;
+        updateCarrusel();
+      }
+    });
+    
+    // Para pantallas pequeñas
+    if (window.matchMedia('(max-width: 768px)').matches) {
+      carruselInterno.style.overflowX = 'auto';
+      carruselInterno.style.flexWrap = 'nowrap';
+      carruselInterno.style.scrollSnapType = 'x mandatory';
+      
+      imagenes.forEach(img => {
+        img.style.scrollSnapAlign = 'start';
+      });
+      
+      siguienteBtn.style.display = 'none';
+      anteriorBtn.style.display = 'none';
+    }
+  }
+
+  // Inicializar todos los carruseles
+  document.querySelectorAll('.carrusel').forEach(initCarrusel);
+
+  // Lightbox
+  const lightbox = document.getElementById('lightbox');
+  const imgAmpliada = document.getElementById('imagen-ampliada');
+  const tituloProyecto = document.getElementById('titulo-proyecto');
+  const textoDescripcion = document.getElementById('texto-descripcion');
+  const cerrarLightbox = document.querySelector('.cerrar-lightbox');
+
+  function openLightbox(imgElement) {
+    imgAmpliada.src = imgElement.src;
+    imgAmpliada.alt = imgElement.alt;
+    tituloProyecto.textContent = imgElement.dataset.titulo || "Proyecto";
+    
+    const driveLink = imgElement.dataset.link;
+    textoDescripcion.innerHTML = imgElement.dataset.descripcion + 
+      (driveLink ? `<br><a href="${driveLink}" target="_blank" class="drive-btn">Ver más</a>` : "");
+    
+    lightbox.style.display = "block";
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeLightbox() {
+    lightbox.style.display = "none";
+    document.body.style.overflow = "auto";
+  }
+
+  document.querySelectorAll('.carrusel').forEach(carrusel => {
+    carrusel.addEventListener('click', (e) => {
+      const img = e.target.closest('img');
+      if (img && carrusel.contains(img)) {
+        openLightbox(img);
       }
     });
   });
-  
-  
+
+  cerrarLightbox.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) closeLightbox();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === "Escape" && lightbox.style.display === "block") {
+      closeLightbox();
+    }
+  });
+
+  // Smooth scrolling para la navegación
+  document.querySelectorAll('.navbar-links a').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('href');
+      const targetElement = document.querySelector(targetId);
+      
+      targetElement.scrollIntoView({
+        behavior: 'smooth'
+      });
+    });
+  });
+});

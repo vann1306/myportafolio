@@ -1,11 +1,55 @@
 /* Add styles here */
+/* Barra de navegación */
+.navbar {
+  background-color: #5E8585;
+  padding: 15px 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-contenedor {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.logo {
+  color: white;
+  font-family: "Lexend Exa";
+  font-weight: bold;
+  font-size: 1.5rem;
+  text-decoration: none;
+}
+
+.navbar-links {
+  display: flex;
+  list-style: none;
+  gap: 25px;
+}
+
+.navbar-links a {
+  color: white;
+  text-decoration: none;
+  font-family: "Be Vietnam Pro";
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.navbar-links a:hover {
+  color: #D1C5BE;
+}
 body {
-    background-color: #F2E7DC;
+    background-color: #efebe9;
     padding-left: 8.5%;
     padding-right: 8.5%;
   }
   .text {
-     font-size: 24;
+     font-size: 16pt;
      font-weight: normal;
      font-family: "Be Vietnam Pro";
      font-style: normal;
@@ -13,7 +57,7 @@ body {
   .tit{
      font-family: "Lexend Exa";  
      font-style: bold;
-     color:#9F0000;
+     color:#7A716B;
      font-size: 36pt;
      text-align: center;
   }
@@ -24,6 +68,7 @@ body {
   .subt{
      font-family: "Lexend Exa";
      font-style: medium;
+     color:#5E8585;
      font-size: 24pt;
   }
   
@@ -59,7 +104,7 @@ body {
     gap: 10px;
   }
   .mi-boton {
-    background-color: #9F0000;
+    background-color: #5E8585;
     color: white;
     padding: 10px 5% ;
     border-radius: 5px;
@@ -90,7 +135,7 @@ body {
   
   
   .pestana-btn {
-    background-color: #000000;
+    background-color:#7A716B;
     padding: 10px 20px;
     font-size: 18px;
     cursor: pointer;
@@ -102,14 +147,14 @@ body {
   
   
   .pestana-btn:hover {
-    color: #9F0000;
+    color: #5E8585;
    
   }
   
   
   .pestana-btn.activo {
     color: #ffffff;
-    background-color: #9F0000;
+    background-color: #5E8585;
     font-weight: bold;
   }
   
@@ -121,7 +166,7 @@ body {
     left: 0;
     width: 100%;
     height: 2px;
-    background-color: #9F0000;
+    background-color: #5E8585;
   }
   
   
@@ -129,9 +174,14 @@ body {
     position: relative;
     width: 100%;
     overflow: hidden;
-    background-color:#9F0000;
+    background-color: #5E8585;
+    margin: 30px 0;
+    border-radius: 10px;
   }
   
+  section {
+    margin-bottom: 60px;
+  }
   
   .carrusel {
     display: none;
@@ -171,7 +221,7 @@ body {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: rgba(159, 0, 0, 0.7);
+    background-color: rgba(107, 157, 97, 0.793);
     color: white;
     border: none;
     border-radius: 50%;
@@ -185,7 +235,7 @@ body {
   
   
   .carrusel-btn:hover {
-    background-color: #9F0000;
+    background-color: #5E8585;
   }
   
   
@@ -238,7 +288,7 @@ body {
   
   
   .descripcion-lightbox {
-   color: #F2E7DC;
+   color: #D1C5BE;
    max-width: 35%;
    font-family: "Be Vietnam Pro";
   }
@@ -247,7 +297,7 @@ body {
   
   
   .descripcion-lightbox h3 {
-   color: #9F0000;
+   color: #5E8585;
    font-family: "Lexend Exa";
    font-size: 24px;
    margin-bottom: 20px;
@@ -260,7 +310,7 @@ body {
    position: absolute;
    top: 20px;
    right: 30px;
-   color: #F2E7DC;
+   color: #D1C5BE;
    font-size: 40px;
    font-weight: bold;
    cursor: pointer;
@@ -271,7 +321,7 @@ body {
   
   
   .cerrar-lightbox:hover {
-   color: #9F0000;
+   color:#5E8585;
   }
   
   
@@ -293,7 +343,7 @@ body {
     width: 200px;
     height: 200px;
     border-radius: 50%;
-    border: 5px solid #9F0000;
+    border: 5px solid #5E8585;
     padding: 3px;
     box-shadow: 0 0 20px rgba(159, 0, 0, 0.3);
   }
@@ -327,7 +377,7 @@ body {
   
   
   .icono-contacto:hover {
-    color: #9F0000;
+    color: #5E8585;
     transform: translateX(5px);
   }
   
@@ -351,7 +401,7 @@ body {
   
   
   .habilidad-blanda {
-    background-color: #F2F2ED;
+    background-color: #FFFEFE;
     padding: 10px;
     border-radius: 10px;
     box-shadow: 0 3px 10px rgba(159, 0, 0, 0.1);
@@ -363,7 +413,7 @@ body {
     align-items: center;
     gap: 15px;
     margin-bottom: 20px;
-    border-bottom: 2px solid #9F0000;
+    border-bottom: 2px solid #5E8585;
     padding-bottom: 10px;
   }
   
@@ -392,7 +442,7 @@ body {
   
   .nivel-progreso {
     height: 100%;
-    background: #9F0000;
+    background: #5E8585;
     border-radius: 10px;
     min-width: 10px; 
     transition: width 1s ease; 
@@ -417,7 +467,7 @@ body {
     margin-top: 15px;
   }
   .etiqueta-habilidad {
-    background: #9F0000;
+    background: #5E8585;
     color: white;
     padding: 8px 15px;
     border-radius: 20px;
@@ -429,7 +479,7 @@ body {
     display: inline-block;
     margin-top: 15px;
     padding: 8px 20px;
-    background: #9F0000;
+    background: #5E8585;
     color: white;
     border-radius: 5px;
     text-decoration: none;
@@ -438,7 +488,7 @@ body {
   }
   
   .drive-btn:hover {
-    background: #7A0000;
+    background: #1c2222;
   }
   
   .descripcion-lightbox a {
@@ -454,8 +504,15 @@ body {
   /* Responsividad */
   @media (max-width: 768px) {
   
-  
-  
+    .navbar-contenedor {
+      flex-direction: column;
+      gap: 15px;
+    }
+    
+    .navbar-links {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
   
     body {
    
